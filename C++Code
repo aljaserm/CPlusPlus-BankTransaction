@@ -1,0 +1,80 @@
+#include <iostream>
+#include <string>
+using namespace std;
+//filename bank.cpp
+class bank
+{
+	public:
+		void bank::Read_data();
+		void bank::Calc_balance();
+		void bank::Print_results();
+	private:
+		double begin_bal,end_bal;
+		double tran_amount; 
+		char tran_type;
+		char acct_type;
+};
+int main()
+{
+	bank fin;
+	fin.Read_data();
+	fin.Calc_balance();
+	fin.Print_results();
+	system("pause");
+	return 0;
+}
+
+void bank::Read_data()
+{
+	system("cls");
+	cout<<"Enter beginning balance $";
+	cin>>begin_bal;
+	cout<<endl<<"c - checking, s - savings"<<endl;
+	cout<<"Enter the account type ";
+	cin>>acct_type;
+	cout<<endl<<"d - deposit, w - withdrawl "<<endl;
+	cout<<"Enter the transaction type ";
+	cin>>tran_type;
+    cout<<endl<<"Enter the amount $";
+	cin>>tran_amount;
+}
+
+void bank::Calc_balance()
+{
+    if(acct_type =='c')//account is checking
+		{
+		if (tran_type =='d')
+			end_bal=begin_bal + tran_amount;
+		else
+		    end_bal=begin_bal - tran_amount;
+		}
+	else //account is savings
+		{
+		if (tran_type =='d')
+			end_bal=begin_bal + tran_amount;
+		else
+			end_bal=begin_bal - tran_amount;
+		}
+}
+
+void bank::Print_results()
+{
+	cout<<endl<<endl<<"Transaction Summary "<<endl;
+	cout<<"=================== "<<endl;
+	cout<<"Account Type       = ";
+	if(acct_type =='c')
+	   cout<<"Checking"<<endl;
+	else
+	   cout<<"Savings"<<endl;
+	cout<<"Transaction Type   = ";
+	if(tran_type =='d')
+	   cout<<"Deposit"<<endl;
+	else
+	   cout<<"Withdrawl"<<endl;
+	cout<<"Begining Balance   = $"<<begin_bal<<endl;
+	cout<<"Transaction Amount = $"<<tran_amount<<endl;
+	cout<<"Ending Balance     = $"<<end_bal<<endl;
+}
+
+
+
